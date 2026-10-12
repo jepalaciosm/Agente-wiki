@@ -1,0 +1,25 @@
+feature_name,modelo_actual,descripcion,tipo
+fraude_por_monto,No,Indicador de si una transacción presenta un monto inusualmente alto versus su historial,binaria
+fraude_por_ubicacion,No,Detecta si la transacción se realiza en una ubicación geográfica anómala para el cliente,binaria
+fraude_por_tiempo,No,Evalúa si la operación ocurre en horarios atípicos o fuera del patrón habitual,binaria
+ratio_transacciones_sincrónicas,No,Compara el número de transacciones realizadas en un corto periodo con el promedio histórico,continuo
+variacion_monto_promedio_30d,No,Medición de la desviación del monto promedio de compras en los últimos 30 días,continuo
+monto_vs_promedio_trx,No,Relación entre el monto de la transacción actual y el promedio de transacciones del cliente,continuo
+frecuencia_transacciones_riesgo,No,Cuenta de eventos con indicadores de riesgo en un intervalo de tiempo determinado,continuo
+uso_telefono_nuevo,No,Señala si el dispositivo o número de teléfono asociado es nuevo para el cliente,binaria
+cambio_ubicacion_rapido,No,Detecta movimiento geográfico repentino y no consistente con el comportamiento previo,binaria
+transaccion_en_pais_no_habitual,No,Identifica transacciones en países donde el cliente no suele operar,binaria
+velocidad_uso_tarjeta,No,Analiza si se usan varias tarjetas de manera acelerada en un periodo breve,continuo
+riesgo_dispositivo_duplicado,No,Detecta si el mismo dispositivo aparece asociado a múltiples clientes o perfiles inusuales,binaria
+porcentaje_transacciones_pendientes,No,Indica proporción de transacciones con alertas o estados de revisión previos,continuo
+promedio_tiempo_entre_transacciones,No,Analiza la regularidad de la separación temporal entre operaciones confirmadas,continuo
+gasto_adelantado_a_horario,No,Detecta consumos fuera del patrón habitual del cliente en días o horas no esperadas,binaria
+suspenso_por_rechazo,No,Identifica si la transacción se realiza en un canal con altos rechazos previos,binaria
+tiempo_desde_ultimo_login,No,Medida del tiempo transcurrido desde la última autenticación del usuario,continuo
+alta_concentracion_en_canales,No,Detecta fuerte concentración del comportamiento de gasto en un único canal o medio,binaria
+similitud_con_fraudes_previos,No,Compara la transacción con patrones conocidos de fraude observados históricamente,continuo
+uso_inusual_de_dispositivos,No,Señala si el cliente usa un dispositivo o navegador no habitual para su perfil,binaria
+monto_acumulado_24h,No,Suma de todos los gastos del cliente en las últimas 24 horas para detectar comportamientos extremos,continuo
+prestamo_no_esperado,No,Detecta solicitudes o movimientos que no corresponden al comportamiento usual del cliente,binaria
+transaccion_en_momento_critico,No,Identifica eventos que coinciden con momentos de mayor riesgo operativo o de alto volumen,binaria
+apertura_cuenta_sin_patron,No,Detecta apertura o activación de cuentas con comportamiento atípico,binaria

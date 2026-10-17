@@ -6,3 +6,4 @@ sentence-transformers
 pandas
 langchain-openai
 langchain-ollama
+langchain-huggingface

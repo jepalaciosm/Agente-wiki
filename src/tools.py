@@ -1,11 +1,13 @@
 import pandas as pd
+from pathlib import Path
 from langchain_community.vectorstores import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.tools import tool
 
 # 1. Cargar el CSV de features de producción
 # Asegúrate de tener un CSV de ejemplo en tu entorno
-df = pd.read_csv("features_produccion.csv")
+csv_path = Path(__file__).resolve().parents[1] / "data" / "features_produccion.csv"
+df = pd.read_csv(csv_path)
 
 # 2. Convertir cada fila en un texto enriquecido para que el embedding capture el contexto
 texts = []

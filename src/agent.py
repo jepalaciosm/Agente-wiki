@@ -1,11 +1,11 @@
 from langchain_ollama import ChatOllama  # O usa langchain_ollama si prefieres local total (ej. ChatOllama(model="llama3"))
 from langgraph.prebuilt import create_react_agent
-from tools import buscar_features_produccion
+from .tools import buscar_features_produccion
 
 # 1. Definir el LLM (Modelo de Lenguaje)
 # Si usas Ollama local: from langchain_ollama import ChatOllama; model = ChatOpenAI(model="llama3")
 model = ChatOllama(
-    model="qwen2.5-coder",  # Reemplaza por el nombre exacto que te dio 'ollama list' si es distinto (ej. qwen2.5-coder:7b)
+    model="qwen2-5-q8:latest",
     temperature=0           # Temperatura baja para que sea preciso y estructurado en sus informes
 )
 
@@ -30,7 +30,7 @@ Flujo de trabajo obligatorio:
 
 # 4. Crear el Agente ReAct utilizando LangGraph
 agent_executor = create_react_agent(
-    model, 
-    tools, 
-    state_modifier=system_prompt
+    model,
+    tools,
+    prompt=system_prompt
 )

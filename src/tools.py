@@ -1,7 +1,7 @@
 import pandas as pd
 from pathlib import Path
 from langchain_community.vectorstores import Chroma
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_ollama import OllamaEmbeddings
 from langchain.tools import tool
 
 # 1. Cargar el CSV de features de producción
@@ -22,8 +22,8 @@ for _, row in df.iterrows():
     texts.append(text)
     metadatas.append({"feature_name": row["feature_name"], "modelo": row["modelo_actual"]})
 
-# 3. Configurar embeddings locales (100% offline y gratis)
-embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+# 3. Usar embeddings multilingües desde Ollama, sin descargar modelos de Hugging Face
+embeddings = OllamaEmbeddings(model="qwen3-embedding:0.6b")
 
 # 4. Crear la base de datos vectorial en memoria con Chroma
 vectorstore = Chroma.from_texts(

@@ -58,8 +58,13 @@ agent-wiki/
    ```bash
    pip install -r requirements.txt
    ```
-4. Configura tus variables de entorno en `.env`.
-5. Ejecuta la aplicación:
+4. Instala en Ollama el modelo local de embeddings:
+   ```bash
+   ollama pull qwen3-embedding:0.6b
+   ```
+   La aplicación lo consulta en el servicio local de Ollama; no descarga modelos desde Hugging Face. Si el entorno no tiene acceso al registro de Ollama, el modelo debe estar disponible localmente antes de iniciar la aplicación.
+5. Configura tus variables de entorno en `.env`.
+6. Ejecuta la aplicación:
    ```bash
    python main.py
    ```

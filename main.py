@@ -1,4 +1,5 @@
 from src.agent import agent_executor
+from src.reporting import generar_reporte_html
 
 def run_agent():
     print("--- Inicializando agent-wiki ---")
@@ -40,7 +41,11 @@ Responde en español, con recomendaciones concretas y priorizadas. No afirmes qu
     print("==================================================")
     print("\n[INFORME GENERADO POR AGENT-WIKI]:\n")
     print("==================================================")
-    print(response["messages"][-1].content)
+    contenido_informe = response["messages"][-1].content
+    print(contenido_informe)
+
+    ruta_reporte = generar_reporte_html.invoke({"contenido": contenido_informe})
+    print(f"\nReporte HTML guardado en: {ruta_reporte}")
 
 if __name__ == "__main__":
     run_agent()

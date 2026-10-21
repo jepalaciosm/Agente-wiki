@@ -40,6 +40,7 @@ agent-wiki/
 ├── src/
 │   ├── __init__.py                  # Permite que src sea un paquete de Python
 │   ├── tools.py                     # Herramienta de ChromaDB y búsqueda vectorial
+│   ├── reporting.py                 # Generación del informe HTML
 │   └── agent.py                     # Prompt del sistema y grafo de LangGraph
 ├── .env                             # Variables de entorno (API keys, configuración)
 ├── .gitignore                      # Archivos a ignorar en Git
@@ -63,6 +64,7 @@ agent-wiki/
    ```bash
    python main.py
    ```
+6. La respuesta también se guarda como un informe HTML en la carpeta `reportes/`.
 
 ## Estado
 

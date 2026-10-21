@@ -14,18 +14,28 @@ def run_agent():
     if not query_usuario.strip():
         print("La consulta no puede estar vacía.")
         return
-    # Requerimiento de prueba de un usuario simulado
-    query_usuario = (
-        "Hola agent-wiki, necesito crear un nuevo modelo de Machine Learning "
-        "para detectar fraude en {query_usuario} "
-        "¿Qué features actuales puedo reutilizar y qué variables nuevas me recomiendas crear?"
-    )
-    
-    # Invocación del grafo de LangGraph
+
+    mensaje_usuario = f"""
+Quiero diseñar features para un modelo de detección de fraude.
+
+Tema o caso de uso descrito por el usuario:
+{query_usuario}
+
+Analiza este caso y:
+1. Resume el tipo de fraude, el comportamiento que se busca detectar y el contexto disponible.
+2. Consulta el catálogo de producción con la herramienta buscar_features_produccion y recomienda las features existentes que sean reutilizables o adaptables. Explica por qué son pertinentes.
+3. Propón features nuevas que cubran vacíos del catálogo y estén vinculadas al caso descrito; evita repetir features existentes con otro nombre.
+4. Para cada feature nueva, especifica su nombre, lógica de cálculo, entidad o nivel de agregación, ventana temporal, datos requeridos y justificación frente al fraude.
+5. Señala los supuestos y riesgos que deben validarse, como disponibilidad de datos, fuga de información, sesgo y estabilidad temporal.
+
+Responde en español, con recomendaciones concretas y priorizadas. No afirmes que existen datos o features si no están confirmados en el catálogo; indica claramente cualquier supuesto.
+"""
+
+    print("Enviando consulta al agente...")
     response = agent_executor.invoke({
-        "messages": [("user", query_usuario)]
+        "messages": [("user", mensaje_usuario)]
     })
-    
+
     # Imprimir la respuesta final del agente
     print("==================================================")
     print("\n[INFORME GENERADO POR AGENT-WIKI]:\n")

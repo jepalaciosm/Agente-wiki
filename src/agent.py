@@ -5,7 +5,7 @@ from .tools import buscar_features_produccion
 # 1. Definir el LLM (Modelo de Lenguaje)
 # Si usas Ollama local: from langchain_ollama import ChatOllama; model = ChatOpenAI(model="llama3")
 model = ChatOllama(
-    model="qwen2-5-q8:latest",
+    model="qwen25-gguf-1p5b:latest",
     temperature=0           # Temperatura baja para que sea preciso y estructurado en sus informes
 )
 

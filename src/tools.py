@@ -22,8 +22,12 @@ for _, row in df.iterrows():
     texts.append(text)
     metadatas.append({"feature_name": row["feature_name"], "modelo": row["modelo_actual"]})
 
-# 3. Configurar embeddings locales (100% offline y gratis)
-embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+# 3. Cargar el modelo local sin permitir descargas desde Hugging Face
+embedding_model_path = Path(__file__).resolve().parents[1] / "MiniLM" / "all-MiniLM-L6-v2.pt"
+embeddings = HuggingFaceEmbeddings(
+    model_name=str(embedding_model_path.resolve()),
+    model_kwargs={"local_files_only": True},
+)
 
 # 4. Crear la base de datos vectorial en memoria con Chroma
 vectorstore = Chroma.from_texts(
